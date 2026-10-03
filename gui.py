@@ -44,17 +44,23 @@ class CompilerGUI(tk.Tk):
         # Paglalagay ng Collapsible Accordion Items
         # === DITO ILALAGAY YUNG SA DATATYPE ===
         dt_node = self.guide_tree.insert("", "end", text=" Datatype", open=True)
-        self.guide_tree.insert(dt_node, "end", text="  int = nambai")
-        self.guide_tree.insert(dt_node, "end", text="  double = dubol")
-        self.guide_tree.insert(dt_node, "end", text="  float = flot")
+        self.guide_tree.insert(dt_node, "end", text="   int = nambai")
+        self.guide_tree.insert(dt_node, "end", text="   double = dubol")
+        self.guide_tree.insert(dt_node, "end", text="   float = flot")
 
         # === DITO ILALAGAY YUNG SA IF-ELSE ===
         if_node = self.guide_tree.insert("", "end", text=" If-else", open=False)
-        self.guide_tree.insert(if_node, "end", text="  kung (condition) { ... }")
+        self.guide_tree.insert(if_node, "end", text="   kung (condition) { ... }")
 
         # === DITO ILALAGAY YUNG SA LOOPS ===
         loop_node = self.guide_tree.insert("", "end", text=" Loops", open=False)
-        self.guide_tree.insert(loop_node, "end", text="  habang (condition) { ... }")
+        self.guide_tree.insert(loop_node, "end", text="   habang (condition) { ... }")
+
+        # === IDINAGDAG NA SWITCH SECTION (Kasama ang Bisaya translation) ===
+        switch_node = self.guide_tree.insert("", "end", text=" Switch", open=True)
+        self.guide_tree.insert(switch_node, "end", text="   pili (expr) { kaso val: ... }")
+        self.guide_tree.insert(switch_node, "end", text="   break = undang;")
+        self.guide_tree.insert(switch_node, "end", text="   default = lain:")
 
         # 2. MAIN CONTENT AREA (Right Side)
         self.right_frame = tk.Frame(self, bg="#D9D9D9")
