@@ -37,25 +37,30 @@ class CompilerGUI(tk.Tk):
         )
         lbl_guide.pack(pady=15)
 
-        # Treeview para sa Collapsible Guide (Datatype, If-else, Loops, Switch)
+        # Treeview para sa Collapsible Guide (Datatype, If-else, Loops)
         self.guide_tree = ttk.Treeview(self.left_frame, show="tree")
         self.guide_tree.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
 
         # Paglalagay ng Collapsible Accordion Items
+        # === DITO ILALAGAY YUNG SA DATATYPE ===
         dt_node = self.guide_tree.insert("", "end", text=" Datatype", open=True)
         self.guide_tree.insert(dt_node, "end", text="   int = nambai")
         self.guide_tree.insert(dt_node, "end", text="   double = dubol")
         self.guide_tree.insert(dt_node, "end", text="   float = flot")
 
+        # === DITO ILALAGAY YUNG SA IF-ELSE ===
         if_node = self.guide_tree.insert("", "end", text=" If-else", open=False)
         self.guide_tree.insert(if_node, "end", text="   kung (condition) { ... }")
 
+        # === DITO ILALAGAY YUNG SA LOOPS ===
         loop_node = self.guide_tree.insert("", "end", text=" Loops", open=False)
         self.guide_tree.insert(loop_node, "end", text="   habang (condition) { ... }")
 
-        # === IDINAGDAG NA SWITCH SECTION ===
+        # === IDINAGDAG NA SWITCH SECTION (Kasama ang Bisaya translation) ===
         switch_node = self.guide_tree.insert("", "end", text=" Switch", open=True)
         self.guide_tree.insert(switch_node, "end", text="   pili (expr) { kaso val: ... }")
+        self.guide_tree.insert(switch_node, "end", text="   break = undang;")
+        self.guide_tree.insert(switch_node, "end", text="   default = lain:")
 
         # 2. MAIN CONTENT AREA (Right Side)
         self.right_frame = tk.Frame(self, bg="#D9D9D9")
@@ -117,6 +122,7 @@ class CompilerGUI(tk.Tk):
         code_input = self.txt_source.get("1.0", tk.END)
         result = self.compiler.run(code_input)
 
+        # I-enable muna ang Text widget para makapag-insert ng text, tsaka i-disable ulit (Read-Only)
         self.txt_output.config(state=tk.NORMAL)
         self.txt_output.delete("1.0", tk.END)
         self.txt_output.insert(tk.END, result)

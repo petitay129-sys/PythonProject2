@@ -7,6 +7,8 @@ class JabaiScriptCompiler:
         if not code.strip():
             return "Error: Empty code block."
 
+        # Dito papasok ang Lexer -> Parser -> Interpreter ninyo.
+        # Ito ay isang SIMPLENG MOCK LOGIC para sa demonstration:
         output_lines = []
         variables = {}
 
@@ -23,7 +25,7 @@ class JabaiScriptCompiler:
             if not line or line.startswith("//"):
                 continue
 
-            # Variable Declaration: nambai day = 2;
+            # Mock Variable Declaration: nambai age = 18;
             if line.startswith("nambai") and "=" in line and line.endswith(";"):
                 parts = line.replace("nambai", "").replace(";", "").split("=")
                 var_name = parts[0].strip()
@@ -37,7 +39,6 @@ class JabaiScriptCompiler:
                 start_idx = line.find("(") + 1
                 end_idx = line.find(")")
                 expr = line[start_idx:end_idx].strip()
-                
                 switch_val = variables.get(expr, expr)
                 execute_block = False
 
@@ -51,27 +52,26 @@ class JabaiScriptCompiler:
                     else:
                         execute_block = False
 
-            # Default / Lain case: default: o lain:
+            # Default Case (Bisaya: lain:)
             elif line.startswith("default:") or line.startswith("lain:"):
                 if in_switch:
-                    # Kung walang nag-match na kaso bago nito, i-execute ang default block
                     if not matched_any_case:
                         execute_block = True
                     else:
                         execute_block = False
 
-            # Break statement (Bisaya: undang;)
+            # Break Statement (Bisaya: undang;)
             elif line == "undang;":
                 if in_switch:
                     execute_block = False
 
-            # Closing brace '}' para sa block
+            # Closing brace
             elif line == "}":
                 execute_block = False
 
-            # Print Statement: printa("Martes");
+            # Mock Print Statement: printa(age);
             elif line.startswith("printa(") and line.endswith(");"):
-                if execute_block:
+                if not in_switch or execute_block:
                     content = line[7:-2].strip().strip('"\'')
                     if content in variables:
                         output_lines.append(variables[content])
