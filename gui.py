@@ -50,7 +50,20 @@ class CompilerGUI(tk.Tk):
 
         # === DITO ILALAGAY YUNG SA IF-ELSE ===
         if_node = self.guide_tree.insert("", "end", text=" If-else", open=False)
-        self.guide_tree.insert(if_node, "end", text="   kung (condition) { ... }")
+        self.guide_tree.insert(if_node, "end", text="   if  =  kung")
+        self.guide_tree.insert(if_node, "end", text="   kung (condition) {")
+        self.guide_tree.insert(if_node, "end", text="       // code here")
+        self.guide_tree.insert(if_node, "end", text="   }")
+        self.guide_tree.insert(if_node, "end", text="")
+        self.guide_tree.insert(if_node, "end", text="   elif  =  kaha kung")
+        self.guide_tree.insert(if_node, "end", text="   kaha kung (condition) {")
+        self.guide_tree.insert(if_node, "end", text="       // code here")
+        self.guide_tree.insert(if_node, "end", text="   }")
+        self.guide_tree.insert(if_node, "end", text="")
+        self.guide_tree.insert(if_node, "end", text="   else  =  kung dili")
+        self.guide_tree.insert(if_node, "end", text="   kung dili {")
+        self.guide_tree.insert(if_node, "end", text="       // code here")
+        self.guide_tree.insert(if_node, "end", text="   }")
 
         # === DITO ILALAGAY YUNG SA LOOPS ===
         loop_node = self.guide_tree.insert("", "end", text=" Loops", open=False)
