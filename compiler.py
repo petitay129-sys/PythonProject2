@@ -106,10 +106,17 @@ class JabaiScriptCompiler:
                 continue
 
             # -------------------------------------------------------
-            # VARIABLE DECLARATION: tibuok age = 18;
+            # VARIABLE DECLARATION:
             # -------------------------------------------------------
             if line.startswith("tibuok") and "=" in line and line.endswith(";"):
                 parts = line.replace("tibuok", "").replace(";", "").split("=")
+                var_name = parts[0].strip()
+                var_val = parts[1].strip().strip('"\'')
+                variables[var_name] = var_val
+                continue
+
+            if line.startswith("bahin") and "=" in line and line.endswith(";"):
+                parts = line.replace("bahin", "").replace(";", "").split("=")
                 var_name = parts[0].strip()
                 var_val = parts[1].strip().strip('"\'')
                 variables[var_name] = var_val
