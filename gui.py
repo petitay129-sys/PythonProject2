@@ -51,7 +51,7 @@ class CompilerGUI(tk.Tk):
         self.guide_tree.insert(dt_node, "end", text="   char = titik")
         self.guide_tree.insert(dt_node, "end", text="   array/list = tapok")
         self.guide_tree.insert(dt_node, "end", text="   object = hugpong")
-        self.guide_tree.insert(dt_node, "end", text="   null = walayBai")
+        self.guide_tree.insert(dt_node, "end", text="   null = walaBai")
 
         # === DITO ILALAGAY YUNG SA IF-ELSE ===
         if_node = self.guide_tree.insert("", "end", text=" If-else", open=False)
