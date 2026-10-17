@@ -41,10 +41,10 @@ class JabaiScriptCompiler:
 
             # kung (condition) {
             kung_if = re.match(r'^kung\s*\((.+)\)\s*\{$', line)
-            # kaha kung (condition) {
-            kaha_kung = re.match(r'^kaha\s+kung\s*\((.+)\)\s*\{$', line)
-            # kung dili {
-            kung_dili = re.match(r'^kung\s+dili\s*\{$', line)
+            # } kaha kung (condition) { or kaha kung (condition) {
+            kaha_kung = re.match(r'^(?:}\s*)?kaha\s+kung\s*\((.+)\)\s*\{$', line)
+            # } kung dili { or kung dili {
+            kung_dili = re.match(r'^(?:}\s*)?kung\s+dili\s*\{$', line)
 
             if kung_if:
                 condition_str = kung_if.group(1).strip()
@@ -57,9 +57,9 @@ class JabaiScriptCompiler:
                 continue
 
             elif kaha_kung:
-                if in_if_block:
-                    # Close previous block (already handled by })
-                    pass
+                # Close the previous branch (the leading "}" is part of this line)
+                in_if_block = False
+                if_block_active = False
                 condition_str = kaha_kung.group(1).strip()
                 result = (not if_chain_matched) and self._eval_condition(condition_str, variables)
                 if result:
@@ -70,6 +70,8 @@ class JabaiScriptCompiler:
                 continue
 
             elif kung_dili:
+                # Close the previous branch (the leading "}" is part of this line)
+                in_if_block = False
                 if_block_active = not if_chain_matched
                 if_chain_matched = True  # else always "consumes" the chain
                 in_if_block = True
