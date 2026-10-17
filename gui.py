@@ -44,9 +44,14 @@ class CompilerGUI(tk.Tk):
         # Paglalagay ng Collapsible Accordion Items
         # === DITO ILALAGAY YUNG SA DATATYPE ===
         dt_node = self.guide_tree.insert("", "end", text=" Datatype", open=True)
-        self.guide_tree.insert(dt_node, "end", text="   int = nambai")
-        self.guide_tree.insert(dt_node, "end", text="   double = dubol")
-        self.guide_tree.insert(dt_node, "end", text="   float = flot")
+        self.guide_tree.insert(dt_node, "end", text="   int = tibuok")
+        self.guide_tree.insert(dt_node, "end", text="   double = bahin")
+        self.guide_tree.insert(dt_node, "end", text="   string = estorya")
+        self.guide_tree.insert(dt_node, "end", text="   boolean = tinuod-bakak")
+        self.guide_tree.insert(dt_node, "end", text="   char = titik")
+        self.guide_tree.insert(dt_node, "end", text="   array/list = tapok")
+        self.guide_tree.insert(dt_node, "end", text="   object = hugpong")
+        self.guide_tree.insert(dt_node, "end", text="   null = walayBai")
 
         # === DITO ILALAGAY YUNG SA IF-ELSE ===
         if_node = self.guide_tree.insert("", "end", text=" If-else", open=False)

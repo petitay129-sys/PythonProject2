@@ -98,18 +98,18 @@ class JabaiScriptCompiler:
                         else:
                             output_lines.append(content)
                     # Handle variable assignment inside if-block
-                    elif line.startswith("nambai") and "=" in line and line.endswith(";"):
-                        parts = line.replace("nambai", "").replace(";", "").split("=")
+                    elif line.startswith("tibuok") and "=" in line and line.endswith(";"):
+                        parts = line.replace("tibuok", "").replace(";", "").split("=")
                         var_name = parts[0].strip()
                         var_val = parts[1].strip().strip('"\'')
                         variables[var_name] = var_val
                 continue
 
             # -------------------------------------------------------
-            # VARIABLE DECLARATION: nambai age = 18;
+            # VARIABLE DECLARATION: tibuok age = 18;
             # -------------------------------------------------------
-            if line.startswith("nambai") and "=" in line and line.endswith(";"):
-                parts = line.replace("nambai", "").replace(";", "").split("=")
+            if line.startswith("tibuok") and "=" in line and line.endswith(";"):
+                parts = line.replace("tibuok", "").replace(";", "").split("=")
                 var_name = parts[0].strip()
                 var_val = parts[1].strip().strip('"\'')
                 variables[var_name] = var_val
